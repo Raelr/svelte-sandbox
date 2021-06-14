@@ -14,7 +14,7 @@
 </script>
 
 <div>
-  <p><span><b>{count}</b></span></p>
+  <p><span>Count: <b>{count}</b></span></p>
   <p><span>Doubled: <b>{doubled}</b></span></p>
   <p><span class={count >= 10 ? 'highCount' : 'button'}><b>{message}</b></span></p>
   <button on:click={incrementCount}>Click me!</button>
@@ -25,11 +25,9 @@
     margin-bottom: 25px;
   }
   span {
-    background-color: black;
     color: white;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid white;
     width: 10%;
   }
   .highCount {
@@ -58,7 +56,7 @@
     align-items: center;
     flex-direction: column;
     margin: 10px;
-    background-color: rgb(13, 15, 54);
+    background-color: black;
     padding: 5px;
     width: 300px;
     text-align: center;

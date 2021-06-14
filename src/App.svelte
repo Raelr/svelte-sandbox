@@ -1,13 +1,18 @@
 <script lang="ts">
-	import NameGetter from './NameGetter.svelte';
-	import MousePositionGetter from './MousePositionGetter.svelte'
-  import ArrayCounter from './ArrayCounter.svelte';
-  import Counter from './Counter.svelte';
+  import NameGetter from './components/NameGetter.svelte';
+  import MousePositionGetter from './components/MousePositionGetter.svelte'
+  import ArrayCounter from './components/ArrayCounter.svelte';
+  import Counter from './components/Counter.svelte';
+  import RangeCounter from './components/RangeCounter.svelte';
+  import RadioInputTracker from './components/RadioInputTracker.svelte';
+
 	enum DisplayMode {
 		COUNT = 0, 
 		ARRAY = 1,
 		MOUSEMOVE = 2,
 		DISPATCH = 3,
+    RANGE = 4,
+    RADIO = 5,
 	}
 
   const modeNames = [
@@ -15,9 +20,11 @@
     'Array',
     `Mouse Position`,
     'Dispatch',
+    'Range',
+    'Radio'
   ];
 
-	const DISPLAY_MODES = 4;
+	const DISPLAY_MODES = 6;
 	export let name: string = 'world';
 
 	let currentMode = DisplayMode.COUNT;
@@ -42,13 +49,17 @@
     <ArrayCounter />
 	{:else if currentMode === DisplayMode.MOUSEMOVE}
     <MousePositionGetter />
-	{:else}
+	{:else if currentMode === DisplayMode.DISPATCH}
 		<NameGetter on:message={alertName}/>
-	{/if}
+  {:else if currentMode === DisplayMode.RANGE}
+    <RangeCounter />
+  {:else}
+    <RadioInputTracker />
+  {/if}
+
 </main>
 
 <style>
-
 	main {
 		text-align: center;
 		padding: 1em;
